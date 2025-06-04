@@ -3,6 +3,7 @@
 ![Licença](https://img.shields.io/badge/licença-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
 ![Flask](https://img.shields.io/badge/Flask-3.0-black?logo=flask)
+[![Aplicação Online](https://img.shields.io/badge/Acessar-Aplicação_Online-brightgreen?style=for-the-badge)](https://reposcribe.onrender.com)
 
 Um assistente de IA que gera arquivos `README.md` profissionais e bem estruturados a partir de repositórios públicos do GitHub.
 
@@ -19,10 +20,20 @@ Cansado de escrever documentação do zero? O **RepoScribe** é uma aplicação 
 
 Este projeto foi criado para demonstrar a construção de uma aplicação full-stack em Python, integrando APIs de terceiros e desenvolvendo uma experiência de usuário útil e agradável.
 
+---
+
 ### 📸 Screenshot da Aplicação
 
-*(Dica: Tire um screenshot da sua aplicação funcionando e substitua a linha abaixo pelo caminho da imagem)*
-![Screenshot do RepoScribe](caminho/para/seu/screenshot.png)
+**A tela de entrada permite inserir o link do repositório do github para gerar o README.md**
+
+![Tela de Entrada](image.png)
+
+**A tela de saída permite escolher entre copiar o conteúdo em markdown gerado, ou realizar o salvamento do arquivo README.md**
+
+![Opções de Salvamento](image-1.png)
+
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
