@@ -1,42 +1,103 @@
 # RepoScribe ✨
 
-![Status](https://img.shields.io/badge/status-em_desenvolvimento-yellow) ![Licença](https://img.shields.io/badge/licença-MIT-blue.svg)
+![Licença](https://img.shields.io/badge/licença-MIT-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-3.0-black?logo=flask)
 
-> 📝 Gerador de README.md com IA que analisa seu código para criar documentação profissional instantaneamente.
-
-**⚠️ Atenção: Este projeto está em fase inicial de planejamento e desenvolvimento. O código ainda não está funcional, e as funcionalidades descritas abaixo representam o objetivo final.**
+Um assistente de IA que gera arquivos `README.md` profissionais e bem estruturados a partir de repositórios públicos do GitHub.
 
 ---
 
-## Visão Geral do Projeto
+## 🎯 Sobre o Projeto
 
-RepoScribe é uma futura ferramenta SaaS projetada para simplificar a vida dos desenvolvedores, automatizando a criação de arquivos `README.md`. Muitas vezes, a documentação é deixada para o final ou esquecida. Esta aplicação visa resolver esse problema usando o poder da Inteligência Artificial para analisar o código-fonte de um projeto e gerar uma documentação inicial clara, profissional e bem estruturada em segundos.
+Cansado de escrever documentação do zero? O **RepoScribe** é uma aplicação web (SaaS) que resolve esse problema. Basta fornecer a URL de um repositório público do GitHub, e o RepoScribe irá:
 
-## 🎯 Principais Funcionalidades Planejadas (MVP)
+1.  Baixar e analisar a estrutura do código-fonte.
+2.  Identificar as tecnologias e dependências utilizadas.
+3.  Utilizar a IA do Google (Gemini) para gerar um `README.md` completo e informativo.
+4.  Exibir o resultado com uma bela formatação, pronto para ser copiado ou baixado.
 
-A primeira versão do RepoScribe se concentrará nas seguintes funcionalidades:
+Este projeto foi criado para demonstrar a construção de uma aplicação full-stack em Python, integrando APIs de terceiros e desenvolvendo uma experiência de usuário útil e agradável.
 
--   [ ] **Upload de Projetos:** Permitir que o usuário envie um arquivo `.zip` contendo o código-fonte.
--   [ ] **Análise de Código:** Extrair automaticamente a estrutura de arquivos, linguagens utilizadas e dependências (ex: `requirements.txt`, `package.json`).
--   [ ] **Integração com IA:** Enviar os dados analisados para a API do Google Gemini para gerar um conteúdo de README coeso e relevante.
--   [ ] **Interface de Resultados:** Exibir o `README.md` gerado em uma interface limpa e amigável.
--   [ ] **Copiar e Baixar:** Oferecer botões para copiar facilmente o conteúdo em Markdown ou baixar o arquivo `.md` gerado.
+### 📸 Screenshot da Aplicação
 
-## 🛠️ Tech Stack Planejada
+*(Dica: Tire um screenshot da sua aplicação funcionando e substitua a linha abaixo pelo caminho da imagem)*
+![Screenshot do RepoScribe](caminho/para/seu/screenshot.png)
 
-Este projeto será construído utilizando as seguintes tecnologias:
+## 🛠️ Tecnologias Utilizadas
 
-* **Backend:** Python com Flask
-* **Inteligência Artificial:** Google Gemini API
-* **Frontend:** HTML, CSS, JavaScript
-* **Deployment:** A ser definido (provavelmente Render ou PythonAnywhere)
+A aplicação foi construída com um conjunto de tecnologias modernas e eficientes:
+
+**Backend:**
+* **Python 3.10+**
+* **Flask:** Micro-framework web para a criação do servidor e da API.
+* **Requests:** Para realizar o download do repositório a partir do GitHub.
+* **Google Generative AI:** Biblioteca para interagir com a API do Gemini 2.0 Flash.
+* **Python-Dotenv:** Para gerenciamento de variáveis de ambiente.
+
+**Frontend:**
+* **HTML5 / CSS3 / JavaScript**
+* **Marked.js:** Para renderizar o texto Markdown em HTML no lado do cliente.
+* **Pico.css:** Framework CSS minimalista para um design limpo e responsivo.
+* **github-markdown-css:** Folha de estilo para que o Markdown renderizado tenha a aparência do GitHub.
+
+## 🚀 Como Rodar o Projeto Localmente
+
+Para executar o RepoScribe na sua máquina local, siga estes passos:
+
+**1. Clone o repositório:**
+```bash
+git clone [https://github.com/andersonaoliveira/repo-scribe.git](https://github.com/andersonaoliveira/repo-scribe.git)
+cd repo-scribe```
+
+
+**2. Crie e ative um ambiente virtual:**
+```bash
+# Crie o ambiente
+python -m venv venv
+
+# Ative no Windows
+venv\Scripts\activate
+
+# Ative no Linux/macOS
+source venv/bin/activate
+```
+
+**3. Instale as dependências:**
+O arquivo `requirements.txt` contém todos os pacotes necessários.
+```bash
+pip install -r requirements.txt
+```
+
+**4. Configure as Variáveis de Ambiente:**
+Este projeto precisa de uma chave de API do Google Gemini para funcionar.
+
+* Crie um arquivo chamado `.env` na raiz do projeto (`repo-scribe/`).
+* Dentro deste arquivo, adicione a seguinte linha, substituindo `SUA_CHAVE_AQUI` pela sua chave real:
+    ```
+    GEMINI_API_KEY=SUA_CHAVE_AQUI
+    ```
+
+**5. Execute a aplicação:**
+```bash
+python app.py
+```
+A aplicação estará disponível em `http://127.0.0.1:5000` no seu navegador.
 
 ## 🤝 Como Contribuir
 
-Este projeto está apenas começando! No momento, estou focando em construir a estrutura base.
+Contribuições são o que tornam a comunidade open-source um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
 
-Assim que o MVP estiver funcional, abrirei para contribuições. Por enquanto, sinta-se à vontade para abrir uma **Issue** neste repositório para deixar sugestões, ideias ou feedbacks. Toda ajuda é bem-vinda!
+1.  Faça um *Fork* do Projeto
+2.  Crie sua *Feature Branch* (`git checkout -b feature/AmazingFeature`)
+3.  Faça o *Commit* de suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4.  Faça o *Push* para a Branch (`git push origin feature/AmazingFeature`)
+5.  Abra um *Pull Request*
 
 ## 📄 Licença
 
-Este projeto é distribuído sob a Licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+Distribuído sob a Licença MIT. Veja o arquivo `LICENSE` para mais informações.
+
+---
+
+Criado por **andersonaoliveira**.
