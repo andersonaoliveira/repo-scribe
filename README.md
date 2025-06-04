@@ -48,8 +48,8 @@ Para executar o RepoScribe na sua máquina local, siga estes passos:
 **1. Clone o repositório:**
 ```bash
 git clone [https://github.com/andersonaoliveira/repo-scribe.git](https://github.com/andersonaoliveira/repo-scribe.git)
-cd repo-scribe```
-
+cd repo-scribe
+```
 
 **2. Crie e ative um ambiente virtual:**
 ```bash
