@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>RepoScribe - Gerador de README com IA</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+    <style>
+        .markdown-body {
+            background-color: var(--card-background-color);
+            color: var(--card-color);
+            border-radius: var(--card-border-radius);
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category or 'info' }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <hgroup>
+            <h1>RepoScribe ✨</h1><br>
+            <h2>Cole a URL de um repositório público do GitHub e deixe a mágica acontecer!</h2>
+        </hgroup>
+        
+        <form action="/generate" method="post">
+            <label for="github_url">URL do Repositório no GitHub</label>
+            <input type="url" name="github_url" id="github_url" placeholder="https://github.com/usuario/repositorio" required>
+            <button type="submit">Gerar README</button>
+        </form>
+
+        {% if readme_content %}
+        <article>
+            <header>
+                <h3>README.md Gerado:</h3>
+            </header>
+            
+            <div id="readme-output" class="markdown-body"></div>
+            
+            <footer>
+                <button onclick="copyToClipboard()">Copiar Texto Markdown</button>
+                <button class="secondary" onclick="downloadReadme()">Baixar README.md</button>
+            </footer>
+        </article>
+        {% endif %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            {% if readme_content %}
+                try {
+                    const markdownContent = {{ readme_content | tojson }};
+                    const outputDiv = document.getElementById('readme-output');
+                    if (outputDiv) {
+                        outputDiv.innerHTML = marked.parse(markdownContent);
+                    }
+                } catch (e) {
+                    console.error("Erro ao renderizar o Markdown:", e);
+                }
+            {% endif %}
+        });
+
+        function copyToClipboard() {
+            {% if readme_content %}
+                const markdownToCopy = {{ readme_content | tojson }};
+                navigator.clipboard.writeText(markdownToCopy).then(() => {
+                    alert('Conteúdo Markdown copiado para a área de transferência!');
+                });
+            {% endif %}
+        }
+
+        function downloadReadme() {
+            {% if readme_content %}
+                const markdownToDownload = {{ readme_content | tojson }};
+                const blob = new Blob([markdownToDownload], { type: 'text/markdown' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'README.md';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(link.href);
+            {% endif %}
+        }
+    </script>
+</body>
+</html>
